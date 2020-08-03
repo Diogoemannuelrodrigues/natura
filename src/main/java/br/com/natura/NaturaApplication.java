@@ -11,6 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import br.com.natura.entidade.Categoria;
 import br.com.natura.entidade.Cliente;
 import br.com.natura.entidade.Endereco;
+import br.com.natura.entidade.ItemPedido;
 import br.com.natura.entidade.Pagamento;
 import br.com.natura.entidade.PagamentoComBoleto;
 import br.com.natura.entidade.PagamentoComCartao;
@@ -44,6 +45,9 @@ public class NaturaApplication implements CommandLineRunner {
 	
 	@Autowired
 	private PagamentoRepository pgtoRepo;
+	
+	@Autowired
+	private ItemPedidoRepository itemRepo;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(NaturaApplication.class, args);
@@ -122,6 +126,17 @@ public class NaturaApplication implements CommandLineRunner {
 		cli1.getPedidos().addAll(Arrays.asList(pedido1,pedido2));
 //		clirepo.save(cli1);
 		
+		ItemPedido item1 = new ItemPedido(pedido1, p1, 0.20, 2, 299.99);
+		ItemPedido item2 = new ItemPedido(pedido2, p2, 0.50, 6, 29.99);
+		
+		pedido1.getItens().add(item1);
+		pedido2.getItens().add(item2);
+		
+		p1.getItens().add(item1);
+		p2.getItens().add(item2);
+		
+		itemRepo.save(item1);
+		itemRepo.save(item2);
 	
 	}
 
