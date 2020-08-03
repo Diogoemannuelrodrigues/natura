@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Produto implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-
+ 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id_produto;
@@ -36,7 +36,9 @@ public class Produto implements Serializable {
 
 	@JsonIgnore
 	@ManyToMany
-	@JoinTable(name = "PRODUTO_CATEGORIA", joinColumns = @JoinColumn(name = "id_produto"), inverseJoinColumns = @JoinColumn(name = "id_categoria"))
+	@JoinTable(name = "PRODUTO_CATEGORIA", 
+	joinColumns = @JoinColumn(name = "id_produto"), 
+	inverseJoinColumns = @JoinColumn(name = "id_categoria"))
 	private List<Categoria> categorias = new ArrayList<>();
 
 	public Produto() {
