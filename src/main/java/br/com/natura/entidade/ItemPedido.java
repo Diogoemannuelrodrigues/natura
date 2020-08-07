@@ -30,7 +30,7 @@ public class ItemPedido {
 		this.quantidade = quantidade;
 		this.preco = preco;
 	}
-
+	
 	public double getSubTotal() {
 		return (preco - desconto) * quantidade;
 	}

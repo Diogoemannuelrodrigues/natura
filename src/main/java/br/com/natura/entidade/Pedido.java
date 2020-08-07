@@ -1,11 +1,13 @@
 package br.com.natura.entidade;
 
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,6 +21,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import br.com.natura.entidade.enums.EstadoPagamento;
+import br.com.natura.utils.GeradorDeCodigoDoPedido;
 
 @Entity
 public class Pedido implements Serializable {
@@ -36,6 +39,10 @@ public class Pedido implements Serializable {
 
 	@JsonFormat(pattern = "dd/MM/yyyy HH:mm")
 	private Date instante;
+	
+	@Column
+	@JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
+	private Calendar dataDoPedido;
 
 	@JsonManagedReference
 	@ManyToOne
@@ -47,6 +54,9 @@ public class Pedido implements Serializable {
 
 	@OneToMany(mappedBy="id.pedido")
 	private Set<ItemPedido> itens = new HashSet<>();
+	
+	@Column(name = "codigo_pedido")
+	private String codigoDoPedido;
 
 	public Pedido() {
 	}
@@ -58,6 +68,15 @@ public class Pedido implements Serializable {
 		this.instante = instante;
 		this.cliente = cliente;
 		this.enderecoDeEntrega = endereco;
+		this.codigoDoPedido = getCogigoDoPedido();
+	}
+
+	public double getValorTotal() {
+		double soma = 0.0;
+		for (ItemPedido ip : itens) {
+			soma = soma + ip.getSubTotal();
+		}
+		return soma;
 	}
 
 	public Integer getId() {
@@ -114,6 +133,20 @@ public class Pedido implements Serializable {
 
 	public void setItens(Set<ItemPedido> itens) {
 		this.itens = itens;
+	}
+	
+	public String getCogigoDoPedido() {
+		codigoDoPedido = GeradorDeCodigoDoPedido.getRandomPassword();
+//		codigoDoPedido = getId();
+		return codigoDoPedido;
+	}
+
+	public Calendar getDataDoPedido() {
+		return dataDoPedido;
+	}
+
+	public void setDataDoPedido(Calendar dataDoPedido) {
+		this.dataDoPedido = dataDoPedido;
 	}
 
 	@Override

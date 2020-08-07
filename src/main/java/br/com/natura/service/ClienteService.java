@@ -6,7 +6,6 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.natura.entidade.Categoria;
 import br.com.natura.entidade.Cliente;
 import br.com.natura.repository.ClienteRepository;
 

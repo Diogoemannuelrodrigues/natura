@@ -5,23 +5,29 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import br.com.natura.entidade.enums.Perfil;
 
 @Entity
 @Table(name = "cliente")
-@JsonIgnoreProperties({"pedidos"})
+@JsonIgnoreProperties({ "pedidos" })
 public class Cliente implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -34,14 +40,23 @@ public class Cliente implements Serializable {
 	private String nome;
 
 	@Column
+	@JsonIgnore
+	private String senha;
+
+	@Column
 	private String cpf;
 
 	@Column
+	@Email(message = "Digite um email válido")
 	private String email;
 
 	@ElementCollection
 	@CollectionTable(name = "TELEFONE")
 	private Set<String> telefones = new HashSet<>();
+	
+	@ElementCollection(fetch=FetchType.EAGER)
+	@CollectionTable(name="PERFIS")
+	private Set<Integer> perfis = new HashSet<>();
 
 	@OneToMany(mappedBy = "cliente")
 	private List<Endereco> enderecos = new ArrayList<>();
@@ -51,13 +66,16 @@ public class Cliente implements Serializable {
 	private List<Pedido> pedidos = new ArrayList<>();
 
 	public Cliente() {
+		addPerfil(Perfil.CLIENTE);
 	}
 
-	public Cliente(String nome, String cpf, String email) {
+	public Cliente(String nome, String cpf, String email, String senha) {
 		super();
 		this.nome = nome;
 		this.cpf = cpf;
 		this.email = email;
+		this.senha = senha;
+		addPerfil(Perfil.CLIENTE);
 	}
 
 	public String getNome() {
@@ -114,6 +132,22 @@ public class Cliente implements Serializable {
 
 	public void setPedidos(List<Pedido> pedidos) {
 		this.pedidos = pedidos;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+	
+	public Set<Perfil> getPerfis() {
+		return perfis.stream().map(x -> Perfil.toEnum(x)).collect(Collectors.toSet());
+	}
+	
+	public void addPerfil(Perfil perfil) {
+		perfis.add(perfil.getCod());
 	}
 
 	@Override
