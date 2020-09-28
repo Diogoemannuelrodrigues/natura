@@ -1,0 +1,12 @@
+.example-card {
+    max-width : 400px ;
+    margin-left: auto;
+    padding-right: 60px;
+
+    
+    
+ }
+ 
+ .example-header-image {
+    background-image : url ('https://www.promobit.com.br/blog/wp-content/uploads/2019/05/23154532/Untitled-design.png' );
+ }

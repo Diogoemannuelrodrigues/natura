@@ -8,7 +8,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class NaturaApplication implements CommandLineRunner {
 
 	
-	
 	public static void main(String[] args) {
 		SpringApplication.run(NaturaApplication.class, args);
 	}

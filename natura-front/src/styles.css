@@ -32,3 +32,26 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
      font-size: small;
      color: black
  }
+
+ body{
+    background-image: url(./assets/nat.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-size: auto;
+   /*  opacity: 0.50; */
+ }
+
+ .title {
+   font-size:50pc;
+}
+/* 
+
+
+
+style="font-size: 70px; font-family: Oswald sans-serif;font-weight:bold;color:#F4A460;text-align:center;margin-top:20px;margin-bottom:30px" */
+
+
+.teste {
+font-size: large;
+}
