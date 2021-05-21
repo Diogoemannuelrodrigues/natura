@@ -5,10 +5,12 @@ import java.util.Locale;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
+@Table(name = "tb_pedido")
 public class ItemPedido {
 
 	@JsonIgnore
