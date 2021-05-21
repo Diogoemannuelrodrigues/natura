@@ -1,4 +1,13 @@
 .sidnave {
   background-color: orange;
-  width: 150px;
+  width: 120px;
+}
+
+
+.sidnave a {
+  color: white
+}
+
+.sidnave i {
+  padding-right: 2px;
 }
