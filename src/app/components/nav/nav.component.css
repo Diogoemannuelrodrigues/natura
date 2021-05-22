@@ -11,3 +11,8 @@
 .sidnave i {
   padding-right: 2px;
 }
+
+.content {
+  padding: 16px;
+  background-color: rgb(250, 250, 250);
+}

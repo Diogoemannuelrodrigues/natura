@@ -1,0 +1,20 @@
+.card {
+  color: orange;
+}
+
+.card .sub {
+  font-size: large;
+  line-height: 1.9;
+}
+
+.card .title {
+  font-size: 2rem;
+}
+
+.menino {
+  border: 12em;
+}
+
+.card .texto {
+  font-size: larger;
+}

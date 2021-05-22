@@ -13,6 +13,12 @@ import { NavComponent } from './components/nav/nav.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
+import { HomeComponent } from './views/home/home.component';
+
+import { MatCardModule } from '@angular/material/card';
+import { ProductCrudComponent } from './views/product-crud/product-crud.component';
+import { LoginComponent } from './login/login/login.component';
+
 
 
 @NgModule({
@@ -20,7 +26,11 @@ import { MatIconModule } from '@angular/material/icon';
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    NavComponent
+    NavComponent,
+    HomeComponent,
+    ProductCrudComponent,
+    LoginComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -30,6 +40,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatSidenavModule,
     MatListModule,
     MatIconModule,
+    MatCardModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
