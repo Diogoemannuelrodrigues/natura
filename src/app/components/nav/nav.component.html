@@ -1,7 +1,7 @@
 
 <mat-sidenav-container class="container ">
   <mat-sidenav class="sidnave mat-elevation-z2" mode="side"
-  opened fixedInViewport="true" fixedTopGap="64">
+  opened fixedInViewport="true" fixedTopGap="64" fixedBottonGap="64">
     <mat-nav-list class="nav-list">
       <a mat-list-item routerLink="/">
         <i class="material-icons">home
@@ -22,6 +22,15 @@
         <i class="material-icons">perm_identity
         </i>
         Vendas
+      </a>
+      <a mat-list-item >
+        <mat-form-field appearance="fill">
+          <mat-label>Produtos</mat-label>
+          <mat-select disableRipple>
+            <mat-option value="1" routerLink="/products">Podutos</mat-option>
+            <mat-option value="2" routerLink="/products-read">LIstar</mat-option>
+          </mat-select>
+        </mat-form-field>
       </a>
     </mat-nav-list>
   </mat-sidenav>

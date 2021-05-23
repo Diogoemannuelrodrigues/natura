@@ -18,6 +18,9 @@ import { HomeComponent } from './views/home/home.component';
 import { MatCardModule } from '@angular/material/card';
 import { ProductCrudComponent } from './views/product-crud/product-crud.component';
 import { LoginComponent } from './login/login/login.component';
+import { MatSelectModule } from '@angular/material/select';
+import { ProductCrudReadComponent } from './views/product-crud-read/product-crud-read.component';
+
 
 
 
@@ -30,6 +33,7 @@ import { LoginComponent } from './login/login/login.component';
     HomeComponent,
     ProductCrudComponent,
     LoginComponent,
+    ProductCrudReadComponent,
 
   ],
   imports: [
@@ -41,6 +45,7 @@ import { LoginComponent } from './login/login/login.component';
     MatListModule,
     MatIconModule,
     MatCardModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

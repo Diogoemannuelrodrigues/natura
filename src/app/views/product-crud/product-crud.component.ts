@@ -10,6 +10,8 @@ export class ProductCrudComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
   }
+
 
 }
