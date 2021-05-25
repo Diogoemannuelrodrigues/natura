@@ -1,8 +1,15 @@
 <mat-card class="card mat-elevation-z3">
   <span class="produtos">
     <a>
-      <img class="logo" src="assets/img/produtos.png" height="100px" alt="logo.">
-      <img src="" alt="" srcset="">
+      Cadastro de Produtos
     </a>
   </span>
+  <div class="example-button-row">
+   <button (click)='createProduct()' color=red mat-button color="primary">Salvar</button>
+  </div>
+  <div class="example-button-row">
+    <button (click)='cancel()' color=red mat-button color="primary">cancel</button>
+   </div>
 </mat-card>
+
+
