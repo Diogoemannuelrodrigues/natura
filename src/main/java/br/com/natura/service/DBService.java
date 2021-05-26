@@ -8,8 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.sun.el.parser.ParseException;
-
 import br.com.natura.entidade.Categoria;
 import br.com.natura.entidade.Cliente;
 import br.com.natura.entidade.Endereco;

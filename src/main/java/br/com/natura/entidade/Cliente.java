@@ -47,8 +47,6 @@ public class Cliente implements Serializable {
 	@Column
 	private String cpf;
 
-	private Integer tipo;
-
 	@Column
 	@Email(message = "Digite um email válido")
 	private String email;
@@ -72,13 +70,12 @@ public class Cliente implements Serializable {
 		addPerfil(Perfil.CLIENTE);
 	}
 
-	public Cliente(String nome, String cpf, String email, TipoCliente tipo, String senha) {
+	public Cliente(String nome, String cpf, String email, String senha) {
 		super();
 		this.nome = nome;
 		this.cpf = cpf;
 		this.email = email;
 		this.senha = senha;
-		this.tipo = (tipo == null) ? null : tipo.getCod();
 		addPerfil(Perfil.CLIENTE);
 	}
 
@@ -112,14 +109,6 @@ public class Cliente implements Serializable {
 
 	public void setEmail(String Email) {
 		this.email = Email;
-	}
-
-	public TipoCliente getTipo() {
-		return TipoCliente.toEnum(tipo);
-	}
-
-	public void setTipo(TipoCliente tipo) {
-		this.tipo = tipo.getCod();
 	}
 
 	public Set<String> getTelefones() {
