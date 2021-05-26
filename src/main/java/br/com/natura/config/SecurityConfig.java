@@ -38,6 +38,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	private static final String[] PUBLIC_MATCHERS_GET = { "/produtos/**", "/pedidos/**", "/clientes/**",
 			"/enderecos/**", "/categorias/**" };
+	
+	private static final String[] PUBLIC_MATCHERS_POST = {
+			"/clientes/**",
+			"/auth/forgot/**"
+	};
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
@@ -47,10 +52,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		}
 
 		http.cors().and().csrf().disable();
-		http.authorizeRequests().antMatchers(HttpMethod.GET, PUBLIC_MATCHERS_GET).permitAll().antMatchers(PUBLIC_MATCHERS)
-				.permitAll().anyRequest().authenticated(); //anyRequest().authenticated() nao permite que faça post
+		http.authorizeRequests()
+		.antMatchers(HttpMethod.POST, PUBLIC_MATCHERS_POST).permitAll()
+		.antMatchers(HttpMethod.GET, PUBLIC_MATCHERS_GET).permitAll()
+		.antMatchers(PUBLIC_MATCHERS).permitAll()
+		.anyRequest().authenticated(); //anyRequest().authenticated() nao permite que faça post
 		http.addFilter(new JWTAuthenticationFilter(authenticationManager(), jwtUtil));
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+	}
+
+	@Override
+	public void configure(AuthenticationManagerBuilder auth) throws Exception {
+		auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder());
 	}
 
 	@Bean
@@ -65,9 +78,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		return new BCryptPasswordEncoder();
 	}
 	
-	@Override
-	public void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder());
-	}
 
 }

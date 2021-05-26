@@ -24,6 +24,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import br.com.natura.entidade.enums.Perfil;
+import br.com.natura.entidade.enums.TipoCliente;
 
 @Entity
 @Table(name = "cliente")
@@ -46,6 +47,8 @@ public class Cliente implements Serializable {
 	@Column
 	private String cpf;
 
+	private Integer tipo;
+
 	@Column
 	@Email(message = "Digite um email válido")
 	private String email;
@@ -53,9 +56,9 @@ public class Cliente implements Serializable {
 	@ElementCollection
 	@CollectionTable(name = "TELEFONE")
 	private Set<String> telefones = new HashSet<>();
-	
-	@ElementCollection(fetch=FetchType.EAGER)
-	@CollectionTable(name="PERFIS")
+
+	@ElementCollection(fetch = FetchType.EAGER)
+	@CollectionTable(name = "PERFIS")
 	private Set<Integer> perfis = new HashSet<>();
 
 	@OneToMany(mappedBy = "cliente")
@@ -69,12 +72,13 @@ public class Cliente implements Serializable {
 		addPerfil(Perfil.CLIENTE);
 	}
 
-	public Cliente(String nome, String cpf, String email, String senha) {
+	public Cliente(String nome, String cpf, String email, TipoCliente tipo, String senha) {
 		super();
 		this.nome = nome;
 		this.cpf = cpf;
 		this.email = email;
 		this.senha = senha;
+		this.tipo = (tipo == null) ? null : tipo.getCod();
 		addPerfil(Perfil.CLIENTE);
 	}
 
@@ -110,6 +114,14 @@ public class Cliente implements Serializable {
 		this.email = Email;
 	}
 
+	public TipoCliente getTipo() {
+		return TipoCliente.toEnum(tipo);
+	}
+
+	public void setTipo(TipoCliente tipo) {
+		this.tipo = tipo.getCod();
+	}
+
 	public Set<String> getTelefones() {
 		return telefones;
 	}
@@ -141,11 +153,11 @@ public class Cliente implements Serializable {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	
+
 	public Set<Perfil> getPerfis() {
 		return perfis.stream().map(x -> Perfil.toEnum(x)).collect(Collectors.toSet());
 	}
-	
+
 	public void addPerfil(Perfil perfil) {
 		perfis.add(perfil.getCod());
 	}

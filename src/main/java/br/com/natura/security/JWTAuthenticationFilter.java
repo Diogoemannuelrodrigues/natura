@@ -19,6 +19,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import br.com.natura.entidade.Credenciais;
+import br.com.natura.entidade.DTO.CredenciaisDTO;
 
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
@@ -37,10 +38,10 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 			throws AuthenticationException {
 
 		try {
-			Credenciais creds = new ObjectMapper().readValue(req.getInputStream(), Credenciais.class);
+			CredenciaisDTO credenciaisDTO = new ObjectMapper().readValue(req.getInputStream(), CredenciaisDTO.class);
 
-			UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(creds.getEmail(),
-					creds.getSenha(), new ArrayList<>());
+			UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(credenciaisDTO.getEmail(),
+					credenciaisDTO.getSenha(), new ArrayList<>());
 
 			Authentication auth = authenticationManager.authenticate(authToken);
 			return auth;
