@@ -11,3 +11,21 @@
   color: orange;
   margin: 38px 0 12px;
 }
+
+.card-cadastro {
+  /* background-color: antiquewhite; */
+  font-size: 20px;
+  width: 450px;
+  align-items: center;
+  text-align: center;
+  padding: 3em;
+  padding-top: 1em;
+  width: 100%;
+  max-width: 800px;
+  margin: 8px auto auto auto;
+}
+
+form{
+  display: flex;
+  flex-direction: column;
+}

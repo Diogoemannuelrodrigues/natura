@@ -10,11 +10,13 @@ import { ProductServiceService } from 'src/app/service/product-service.service';
 export class ProductCrudComponent implements OnInit {
 
   produto: Produto = {
-  nome: "Diogo",
-  codigo: 123213,
-  descricao: "Testes de inclusao",
-  preco: 213
+  nome: '',
+  codigoProduto: '',
+  descricao: '',
+  preco: ''
   }
+
+  produtos: Produto[] = new Array;
 
   constructor(private productService: ProductServiceService,
               private router: Router) { }
@@ -31,6 +33,18 @@ ngOnInit(): void {
     .create(this.produto)
     .subscribe(resultado => {
       alert("Produto Cadastrado com sucesso")
+      this.load();
+    })
+  }
+
+  load() {
+    location.reload()
+  }
+
+  getProdutos(){
+    this.productService.getProdutos().subscribe(produtos =>{
+      console.log(produtos);
+      produtos = produtos;
       this.router.navigate(['/products'])
     })
   }

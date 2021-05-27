@@ -16,6 +16,10 @@ export class ProductServiceService {
     return this.http.post('http://localhost:8080/produtos', produto);
   }
 
+  public getProdutos(): Observable<Produto> {
+    return this.http.get<Produto>(this.API);
+  }
+
 }
 
 

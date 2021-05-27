@@ -1,15 +1,44 @@
 <mat-card class="card mat-elevation-z3">
+  <!-- Card do texto de cadastro. -->
   <span class="produtos">
     <a>
       Cadastro de Produtos
     </a>
   </span>
-  <div class="example-button-row">
-   <button (click)='createProduct()' color=red mat-button color="primary">Salvar</button>
-  </div>
-  <div class="example-button-row">
-    <button (click)='cancel()' color=red mat-button color="primary">cancel</button>
-   </div>
+
+  <mat-card class="card-cadastro col-xs-12 col-sm-3 col-md-3 col-lg-3">
+    <span>
+      <form>
+        <div cols="6">
+          <mat-form-field>
+            <input matInput placeholder="Nome" [(ngModel)]="produto.nome" >
+          </mat-form-field>
+        </div>
+        <div cols="4">
+          <mat-form-field>
+            <input matInput placeholder="Preco (R$)" [(ngModel)]="produto.preco" >
+          </mat-form-field>
+        </div>
+        <div cols="4">
+          <mat-form-field>
+            <input matInput placeholder="Codigo do produto" [(ngModel)]="produto.codigoProduto" >
+          </mat-form-field>
+        </div>
+        <div cols="4">
+          <mat-form-field>
+            <textarea matInput placeholder="Descricao do Produto" [(ngModel)]="produto.descricao" >
+            </textarea>
+            </mat-form-field>
+        </div>
+      </form>
+    </span>
+    <div class="example-button-row">
+      <button (click)='createProduct()' color=red mat-button color="primary">Salvar</button>
+      <button (click)='cancel()' color=red mat-button color="primary">cancel</button>
+    </div>
+
+  </mat-card>
 </mat-card>
+
 
 
