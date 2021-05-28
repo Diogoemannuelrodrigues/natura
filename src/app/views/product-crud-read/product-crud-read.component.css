@@ -16,8 +16,16 @@
   margin: auto;
 }
 
-table {
+.card .filtro{
+  font-size: 20px;
+}
+
+.table {
   width: 100%;
+}
+
+.card .display{
+  align-items: center;
 }
 
 .mat-form-field {
