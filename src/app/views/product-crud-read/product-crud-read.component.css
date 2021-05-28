@@ -1,4 +1,21 @@
-/* Structure */
+
+.produtos{
+  font-size: 72px;
+  color: orange;
+  margin: 38px 0 12px;
+  text-align: center;
+  align-items: center;
+}
+
+.card {
+  text-align: center;
+  align-items: center;
+  padding: 3em;
+  padding-top: 3em;
+  background-color: 0fff;
+  margin: auto;
+}
+
 table {
   width: 100%;
 }
@@ -7,3 +24,18 @@ table {
   font-size: 14px;
   width: 100%;
 }
+
+ .divisor{
+    margin-top: 25px;
+ }
+
+ .card .cadastro {
+   margin-top: 35px;
+   align-items: center;
+   color: orange;
+ }
+
+ .cadastro .table{
+   margin-top: 25px;
+
+ }

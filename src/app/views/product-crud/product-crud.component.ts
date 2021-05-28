@@ -28,12 +28,11 @@ ngOnInit(): void {
 }
 
  createProduct() {
-    console.log(this.produto);
     this.productService
     .create(this.produto)
     .subscribe(resultado => {
-      alert("Produto Cadastrado com sucesso")
-      this.load();
+      console.log(this.produto.id_produto);
+      alert(this.produto.id_produto + " Cadastrado com sucesso")
     })
   }
 
@@ -41,15 +40,15 @@ ngOnInit(): void {
     location.reload()
   }
 
-  getProdutos(){
+ /*  getProdutos(){
     this.productService.getProdutos().subscribe(produtos =>{
       console.log(produtos);
       produtos = produtos;
       this.router.navigate(['/products'])
     })
-  }
+  } */
 
   cancel(){
-    this.router.navigate(['/'])
+    this.router.navigate(['/products-read'])
   }
 }

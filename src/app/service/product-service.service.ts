@@ -12,12 +12,11 @@ export class ProductServiceService {
   API  = 'http://localhost:8080/produtos/';
 
   public create(produto: Produto) {
-    console.log('Id Produto ' + produto.id);
     return this.http.post('http://localhost:8080/produtos', produto);
   }
 
-  public getProdutos(): Observable<Produto> {
-    return this.http.get<Produto>(this.API);
+  public getProdutos(): Observable<Produto[]> {
+    return this.http.get<Produto[]>(this.API);
   }
 
 }
