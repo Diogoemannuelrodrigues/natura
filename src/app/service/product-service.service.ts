@@ -19,6 +19,17 @@ export class ProductServiceService {
     return this.http.get<Produto[]>(this.API);
   }
 
+  getById(id: string): Observable<Produto> {
+    const APIBYID = `${this.API}/${id}`;
+    return this.http.get<Produto>(APIBYID);
+  }
+
+  public getUpdate(produto: Produto): Observable<Produto> {
+    const url = `${this.API}/${produto.id_produto}`;
+    return this.http.put<Produto>(url, produto)
+  }
+
+
 }
 
 

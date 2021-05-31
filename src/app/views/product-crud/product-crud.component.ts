@@ -40,15 +40,7 @@ ngOnInit(): void {
     location.reload()
   }
 
- /*  getProdutos(){
-    this.productService.getProdutos().subscribe(produtos =>{
-      console.log(produtos);
-      produtos = produtos;
-      this.router.navigate(['/products'])
-    })
-  } */
-
   cancel(){
-    this.router.navigate(['/products-read'])
+    this.router.navigate(['/produtos-read'])
   }
 }

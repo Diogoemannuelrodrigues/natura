@@ -1,3 +1,4 @@
+import { ProdutoUpdateComponent } from './views/produto-update/produto-update.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login/login.component';
@@ -9,8 +10,9 @@ import { ProductCrudReadComponent } from './views/product-crud-read/product-crud
 const routes: Routes = [
   { path: "", component: HomeComponent},
   { path: 'login', component: LoginComponent},
-  { path: 'products', component: ProductCrudComponent},
-  { path: 'products-read', component: ProductCrudReadComponent},
+  { path: 'produtos', component: ProductCrudComponent},
+  { path: 'produtos-read', component: ProductCrudReadComponent},
+  { path: 'produto-update/:id_produto', component: ProdutoUpdateComponent},
 ];
 
 @NgModule({

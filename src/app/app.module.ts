@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -28,6 +26,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTableModule } from '@angular/material/table';
+import { ProdutoUpdateComponent } from './views/produto-update/produto-update.component';
 
 
 @NgModule({
@@ -40,6 +39,7 @@ import { MatTableModule } from '@angular/material/table';
     ProductCrudComponent,
     LoginComponent,
     ProductCrudReadComponent,
+    ProdutoUpdateComponent,
 
   ],
   imports: [

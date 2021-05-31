@@ -38,3 +38,12 @@
   margin-bottom: 27px;
 }
 
+i.edit{
+  color: orange;
+  margin-right: 10px;
+}
+
+i.delete{
+  color: #e35e6b;
+}
+
