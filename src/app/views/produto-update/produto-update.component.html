@@ -5,4 +5,37 @@
       Editar Produto
     </a>
   </span>
+
+  <mat-card class="card-cadastro mat-elevation-z8">
+    <span>
+      <form class="example-form">
+        <div cols="6">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Nome" name="nome" >
+          </mat-form-field>
+        </div>
+        <div cols="4">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Preco (R$)"  name="preco" >
+          </mat-form-field>
+        </div>
+        <div cols="4">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Codigo do produto"  name="codigoProduto">
+          </mat-form-field>
+        </div>
+        <div cols="4">
+          <mat-form-field class="example-full-width">
+            <textarea matInput placeholder="Descricao do Produto" name="descricao">
+            </textarea>
+            </mat-form-field>
+        </div>
+      </form>
+    </span>
+    <div>
+      <button class="botao mat-elevation-z4" mat-button >Salvar</button>
+      <button routerLink="/produtos-read" class="botao_cancel mat-elevation-z3" mat-button >cancel</button>
+    </div>
+  </mat-card>
+
 </mat-card>
