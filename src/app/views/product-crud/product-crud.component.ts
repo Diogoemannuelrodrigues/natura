@@ -11,9 +11,9 @@ export class ProductCrudComponent implements OnInit {
 
   produto: Produto = {
   nome: '',
-  codigoProduto: '',
+  codigoProduto: 0,
   descricao: '',
-  preco: ''
+  preco: 0
   }
 
   produtos: Produto[] = new Array;

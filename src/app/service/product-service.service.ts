@@ -9,7 +9,7 @@ import { Observable } from 'rxjs/internal/Observable';
 export class ProductServiceService {
 
   constructor(private http: HttpClient) { }
-  API  = 'http://localhost:8080/produtos/';
+  API  = 'http://localhost:8080/produtos';
 
   public create(produto: Produto) {
     return this.http.post('http://localhost:8080/produtos', produto);
@@ -19,7 +19,7 @@ export class ProductServiceService {
     return this.http.get<Produto[]>(this.API);
   }
 
-  getById(id: string): Observable<Produto> {
+  getById(id: number): Observable<Produto> {
     const APIBYID = `${this.API}/${id}`;
     return this.http.get<Produto>(APIBYID);
   }
