@@ -19,6 +19,7 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import br.com.natura.security.JWTAuthenticationFilter;
+import br.com.natura.security.JWTAuthorizationFilter;
 import br.com.natura.security.JWTUtil;
 
 @EnableWebSecurity
@@ -36,11 +37,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	private static final String[] PUBLIC_MATCHERS = { "/h2-console/**" };
 
-	private static final String[] PUBLIC_MATCHERS_GET = { "/produtos/**", "/pedidos/**", "/clientes/**",
-			"/enderecos/**", "/categorias/**" };
+	private static final String[] PUBLIC_MATCHERS_GET = { "/produtos/**", "/enderecos/**", "/clientes/**" };
 	
 	private static final String[] PUBLIC_MATCHERS_POST = {
 			"/clientes/**",
+			"/produtos/**",
 			"/auth/forgot/**"
 	};
 
@@ -55,9 +56,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests()
 		.antMatchers(HttpMethod.POST, PUBLIC_MATCHERS_POST).permitAll()
 		.antMatchers(HttpMethod.GET, PUBLIC_MATCHERS_GET).permitAll()
-		.antMatchers(PUBLIC_MATCHERS).permitAll()
-		.anyRequest().authenticated(); //anyRequest().authenticated() nao permite que faça post
+		.antMatchers(PUBLIC_MATCHERS).permitAll();
+//		.anyRequest().authenticated(); //anyRequest().authenticated() nao permite que faça post
 		http.addFilter(new JWTAuthenticationFilter(authenticationManager(), jwtUtil));
+		http.addFilter(new JWTAuthorizationFilter(authenticationManager(), jwtUtil, userDetailsService));
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 	}
 
@@ -68,8 +70,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Bean
 	CorsConfigurationSource corsConfigurationSource() {
+		/*
+		 * Foram adicionadas essas duas linhas a 77 e 78 para conseguir alterar o produto.
+		 * 
+		 */
+		CorsConfiguration configuration = new CorsConfiguration().applyPermitDefaultValues(); 
+        configuration.setAllowedMethods(Arrays.asList("POST", "GET", "PUT", "DELETE", "OPTIONS"));
 		final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-		source.registerCorsConfiguration("/**", new CorsConfiguration().applyPermitDefaultValues());
+		source.registerCorsConfiguration("/**", configuration);
 		return source;
 	}
 	

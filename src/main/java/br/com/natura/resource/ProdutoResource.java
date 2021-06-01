@@ -40,7 +40,7 @@ public class ProdutoResource {
 		return ResponseEntity.created(uri).build();
 	}
 	
-	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+	@RequestMapping(value = "/{id_produto}", method = RequestMethod.PUT)
 	public ResponseEntity<Produto> alterarProduto (@RequestBody Produto produto){
 		Produto produtoalt = produtoService.alterarProduto(produto);
 		return ResponseEntity.ok().body(produtoalt);

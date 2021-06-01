@@ -55,22 +55,26 @@ public class DBService {
 	private BCryptPasswordEncoder pe;
 
 	public void instantiateTestDatabase() throws java.text.ParseException {
-		Categoria cate1 = new Categoria(null, "Perfumes");
-		Categoria cate2 = new Categoria(null, "Esmaltes");
-		Categoria cate3 = new Categoria(null, "Shamppos");
+				
+		Categoria cat1 = new Categoria(null, "Perfumes");
+		Categoria cat2 = new Categoria(null, "Esmaltes");
+		Categoria cat3 = new Categoria(null, "Shamppos");
+		Categoria cat4 = new Categoria(null, "Perfumaria");
+		Categoria cat5 = new Categoria(null, "Decoração");
 
 		Produto p1 = new Produto(null, "Perfume 212", 123546, "Perfume 212", 229.90);
 		Produto p2 = new Produto(null, "Perfume Natura", 894842, "Perfume NAtura", 29.90);
+		
 
-		p1.getCategorias().addAll(Arrays.asList(cate1, cate2));
-		p2.getCategorias().addAll(Arrays.asList(cate3));
+		p1.getCategorias().addAll(Arrays.asList(cat1, cat2));
+		p2.getCategorias().addAll(Arrays.asList(cat3));
 
-		cate1.getProdutos().addAll(Arrays.asList(p1, p2));
-		cate2.getProdutos().addAll(Arrays.asList(p1));
+		cat1.getProdutos().addAll(Arrays.asList(p1, p2));
+		cat2.getProdutos().addAll(Arrays.asList(p1));
 
-		categoriaRepository.save(cate1);
-		categoriaRepository.save(cate2);
-		categoriaRepository.save(cate3);
+		categoriaRepository.save(cat1);
+		categoriaRepository.save(cat2);
+		categoriaRepository.save(cat3);
 
 		produtoRepository.save(p1);
 		produtoRepository.save(p2);
