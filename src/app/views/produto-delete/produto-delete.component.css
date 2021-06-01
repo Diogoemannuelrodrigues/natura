@@ -1,0 +1,49 @@
+.card {
+  text-align: center;
+  align-items: center;
+  padding: 3em;
+  padding-top: 3em;
+  background-color: 0fff;
+  margin: auto;
+}
+
+.produtos{
+  font-size: 72px;
+  color: orange;
+  margin: 38px 0 12px;
+  text-align: center;
+  align-items: center;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.card .card-cadastro {
+  /* background-color: antiquewhite; */
+  font-size: 20px;
+  width: 450px;
+  padding: 3em;
+  padding-top: 1em;
+  width: 100%;
+  max-width: 500px;
+  margin: 8px auto auto auto;
+  padding-bottom: 18px;
+  margin-block-end: 20px;
+  margin-top: 29px;
+  color: rgb(255, 123, 0);
+}
+
+.example-full-width {
+  /* align-items: center; */
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  padding: 0px 0px 0px 0px
+}
+
+.card-cadastro .botao{
+  color: rgb(255, 123, 0);
+  margin-right: 6px;
+}
+
+.card-cadastro .botao_cancel{
+  color: rgb(255, 123, 0);
+}

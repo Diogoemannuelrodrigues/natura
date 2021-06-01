@@ -27,6 +27,7 @@ import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTableModule } from '@angular/material/table';
 import { ProdutoUpdateComponent } from './views/produto-update/produto-update.component';
+import { ProdutoDeleteComponent } from './views/produto-delete/produto-delete.component';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { ProdutoUpdateComponent } from './views/produto-update/produto-update.co
     LoginComponent,
     ProductCrudReadComponent,
     ProdutoUpdateComponent,
+    ProdutoDeleteComponent,
 
   ],
   imports: [

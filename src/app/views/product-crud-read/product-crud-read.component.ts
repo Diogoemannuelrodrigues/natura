@@ -27,4 +27,6 @@ export class ProductCrudReadComponent implements OnInit {
   }
 
 
+
+
 }

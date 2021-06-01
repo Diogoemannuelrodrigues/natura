@@ -19,7 +19,7 @@ export class ProductServiceService {
     return this.http.get<Produto[]>(this.API);
   }
 
-  getById(id: number): Observable<Produto> {
+  public getById(id: number): Observable<Produto> {
     const APIBYID = `${this.API}/${id}`;
     return this.http.get<Produto>(APIBYID);
   }
@@ -29,6 +29,11 @@ export class ProductServiceService {
     return this.http.put<Produto>(url, produto)
   }
 
+  public getDelete(id: number): Observable<Produto> {
+    const APIBYID = `${this.API}/${id}`;
+    return this.http.delete<Produto>(APIBYID);
+
+  }
 
 }
 

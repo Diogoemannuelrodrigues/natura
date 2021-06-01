@@ -11,9 +11,9 @@ export class ProductCrudComponent implements OnInit {
 
   produto: Produto = {
   nome: '',
-  codigoProduto: 0,
+  codigoProduto: '',
   descricao: '',
-  preco: 0
+  preco: ''
   }
 
   produtos: Produto[] = new Array;
@@ -28,11 +28,12 @@ ngOnInit(): void {
 }
 
  createProduct() {
+   console.log(this.produto.id_produto);
     this.productService
     .create(this.produto)
     .subscribe(resultado => {
-      console.log(this.produto.id_produto);
       alert(this.produto.id_produto + " Cadastrado com sucesso")
+      this.cancel()
     })
   }
 

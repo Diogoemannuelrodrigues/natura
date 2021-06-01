@@ -1,27 +1,27 @@
-import { ActivatedRoute, Router } from '@angular/router';
-import { Produto } from './../product-crud/product.model';
-import { ProductServiceService } from 'src/app/service/product-service.service';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ProductServiceService } from 'src/app/service/product-service.service';
+import { Produto } from '../product-crud/product.model';
 
 @Component({
-  selector: 'app-produto-update',
-  templateUrl: './produto-update.component.html',
-  styleUrls: ['./produto-update.component.css']
+  selector: 'app-produto-delete',
+  templateUrl: './produto-delete.component.html',
+  styleUrls: ['./produto-delete.component.css']
 })
-export class ProdutoUpdateComponent implements OnInit {
+export class ProdutoDeleteComponent implements OnInit {
 
   produto: Produto = {
     nome: '',
     codigoProduto: '',
     descricao: '',
     preco: ''
-    }
+  }
 
   constructor(
     private service: ProductServiceService,
     private route: ActivatedRoute,
     private router: Router
-    ) { }
+  ) { }
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get("id_produto");
@@ -30,12 +30,16 @@ export class ProdutoUpdateComponent implements OnInit {
     });
   }
 
-  updateProduct(): void {
-    this.service.getUpdate(this.produto).subscribe(produto => {
+  deleteProduct(): void {
+    this.service.getDelete(Number(this.produto.id_produto)).subscribe(produto => {
       this.produto = produto;
-      alert("Produto "+ produto.id_produto+ " atualizado com sucesso!");
+      alert("Produto " + produto.id_produto + " deletado com sucesso!");
       this.router.navigate(['/produtos-read'])
+      this.load();
     });
   }
 
+  load() {
+    location.reload()
+  }
 }
