@@ -11,13 +11,15 @@
   font-size: 72px;
   color: orange;
   margin: 38px 0 12px;
+  align-items: center;
 }
 
 .card .imagem {
   margin-top: 20px;
+  align-items: center;
 }
 
 .card .card-centro{
-  width: 800px;
-  align-items: center;
+    align-items: center;
+    margin-top: 20px;
 }
