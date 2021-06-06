@@ -28,6 +28,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTableModule } from '@angular/material/table';
 import { ProdutoUpdateComponent } from './views/produto-update/produto-update.component';
 import { ProdutoDeleteComponent } from './views/produto-delete/produto-delete.component';
+import { VendasPagamentoComponent } from './views/vendas-pagamento/vendas-pagamento.component';
 
 
 @NgModule({
@@ -42,6 +43,7 @@ import { ProdutoDeleteComponent } from './views/produto-delete/produto-delete.co
     ProductCrudReadComponent,
     ProdutoUpdateComponent,
     ProdutoDeleteComponent,
+    VendasPagamentoComponent,
 
   ],
   imports: [

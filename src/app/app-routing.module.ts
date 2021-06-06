@@ -1,3 +1,4 @@
+import { VendasPagamentoComponent } from './views/vendas-pagamento/vendas-pagamento.component';
 import { ProdutoDeleteComponent } from './views/produto-delete/produto-delete.component';
 import { ProdutoUpdateComponent } from './views/produto-update/produto-update.component';
 import { NgModule } from '@angular/core';
@@ -14,7 +15,8 @@ const routes: Routes = [
   { path: 'produtos', component: ProductCrudComponent},
   { path: 'produtos-read', component: ProductCrudReadComponent},
   { path: 'produto-update/:id_produto', component: ProdutoUpdateComponent},
-  { path: 'produto-delete/:id_produto', component: ProdutoDeleteComponent}
+  { path: 'produto-delete/:id_produto', component: ProdutoDeleteComponent},
+  { path: 'vendas', component: VendasPagamentoComponent}
 ];
 
 @NgModule({

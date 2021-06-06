@@ -1,0 +1,23 @@
+.card {
+  text-align: center;
+  align-items: center;
+  padding: 3em;
+  padding-top: 3em;
+  background-color: 0fff;
+  margin: auto;
+}
+
+.produtos{
+  font-size: 72px;
+  color: orange;
+  margin: 38px 0 12px;
+}
+
+.card .imagem {
+  margin-top: 20px;
+}
+
+.card .card-centro{
+  width: 800px;
+  align-items: center;
+}
