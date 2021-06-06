@@ -11,12 +11,13 @@ export class ProductCrudComponent implements OnInit {
 
   produto: Produto = {
   nome: '',
-  codigoProduto: '',
+  codigoProduto: 0,
   descricao: '',
   preco: ''
   }
 
   produtos: Produto[] = new Array;
+  number: Number = new Number;
 
   constructor(private productService: ProductServiceService,
               private router: Router) { }
@@ -24,7 +25,7 @@ export class ProductCrudComponent implements OnInit {
 //colocar um snacbar para cadastrado com sucesso.
 
 ngOnInit(): void {
-
+  this. generateNumber();
 }
 
  createProduct() {
@@ -43,5 +44,11 @@ ngOnInit(): void {
 
   cancel(){
     this.router.navigate(['/produtos-read'])
+  }
+
+  generateNumber() {
+    let min = Math.ceil(10000);
+    let max = Math.floor(99999);
+    return this.produto.codigoProduto = Math.floor(Math.random() * (max - min + 1)) + min;
   }
 }

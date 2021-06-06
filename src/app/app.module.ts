@@ -22,7 +22,7 @@ import { ProductCrudReadComponent } from './views/product-crud-read/product-crud
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { HttpClientModule } from '@angular/common/http';
-
+import { MatMenuModule } from '@angular/material/menu';
 import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTableModule } from '@angular/material/table';
@@ -60,6 +60,7 @@ import { ProdutoDeleteComponent } from './views/produto-delete/produto-delete.co
     MatInputModule,
     HttpClientModule,
     MatTableModule,
+    MatMenuModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

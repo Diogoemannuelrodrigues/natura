@@ -12,7 +12,7 @@ export class ProdutoDeleteComponent implements OnInit {
 
   produto: Produto = {
     nome: '',
-    codigoProduto: '',
+    codigoProduto: 0,
     descricao: '',
     preco: ''
   }
@@ -31,15 +31,7 @@ export class ProdutoDeleteComponent implements OnInit {
   }
 
   deleteProduct(): void {
-    this.service.getDelete(Number(this.produto.id_produto)).subscribe(produto => {
-      this.produto = produto;
-      alert("Produto " + produto.id_produto + " deletado com sucesso!");
-      this.router.navigate(['/produtos-read'])
-      this.load();
-    });
+    this.service.getDelete(Number(this.produto.id_produto)).pipe().subscribe(() => this.router.navigate(['/produtos-read']));
   }
 
-  load() {
-    location.reload()
-  }
 }

@@ -1,6 +1,6 @@
 import { ProductServiceService } from 'src/app/service/product-service.service';
 import { Produto } from './../product-crud/product.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
@@ -18,6 +18,10 @@ export class ProductCrudReadComponent implements OnInit {
   ngOnInit(): void {
     this.getProdutos();
   }
+
+/*   ngOnChanges(changes: SimpleChanges): void {
+    this.getProdutos();
+  } */
 
   getProdutos(){
     this.service.getProdutos().subscribe(produtos => {

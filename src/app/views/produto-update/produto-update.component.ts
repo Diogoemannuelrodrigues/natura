@@ -12,7 +12,7 @@ export class ProdutoUpdateComponent implements OnInit {
 
   produto: Produto = {
     nome: '',
-    codigoProduto: '',
+    codigoProduto: 0,
     descricao: '',
     preco: ''
     }

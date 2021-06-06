@@ -28,14 +28,15 @@
 }
 
 .card .cadastro {
-  margin-top: 25px;
-  margin-bottom: 25px;
-  align-items: center;
+  margin-top: 1px;
+  margin-bottom: 2px;
+  align-items: flex-start;
   color: orange;
 }
 
 .card .imagem{
   margin-bottom: 27px;
+  margin-top: 18px;
 }
 
 i.edit{
@@ -45,5 +46,9 @@ i.edit{
 
 i.delete{
   color: #e35e6b;
+}
+
+.promo{
+  margin-top: 20px;
 }
 
