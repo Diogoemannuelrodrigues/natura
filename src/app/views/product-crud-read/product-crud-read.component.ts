@@ -11,7 +11,7 @@ import { MatTableDataSource } from '@angular/material/table';
 export class ProductCrudReadComponent implements OnInit {
 
   produtos: Produto[] = [];
-  displayedColumns = ['id_produto', 'nome', 'preco', 'codigoProduto', 'descricao', 'actions'];
+  displayedColumns = ['id_produto', 'nome', 'preco', 'codigoProduto', 'tipo', 'descricao', 'actions'];
 
   constructor(private service: ProductServiceService) { }
 

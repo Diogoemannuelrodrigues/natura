@@ -13,7 +13,7 @@ export class ProductCrudComponent implements OnInit {
   nome: '',
   codigoProduto: 0,
   descricao: '',
-  preco: ''
+  preco: '',
   }
 
   produtos: Produto[] = new Array;
@@ -25,7 +25,7 @@ export class ProductCrudComponent implements OnInit {
 //colocar um snacbar para cadastrado com sucesso.
 
 ngOnInit(): void {
-  this. generateNumber();
+  this.generateNumber();
 }
 
  createProduct() {
@@ -46,9 +46,17 @@ ngOnInit(): void {
     this.router.navigate(['/produtos-read'])
   }
 
-  generateNumber() {
+  /* generateNumber() {
     let min = Math.ceil(10000);
     let max = Math.floor(99999);
     return this.produto.codigoProduto = Math.floor(Math.random() * (max - min + 1)) + min;
+  } */
+
+  generateNumber(){
+    if(this.produto.tipo === 'PERFUMARIA'){
+      this.produto.codigoProduto = 43278;
+    } else if (this.produto.tipo === 'INFATIL'){
+      this.produto.codigoProduto = 43278;
+    }
   }
 }

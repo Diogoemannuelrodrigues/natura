@@ -20,6 +20,18 @@
           </mat-form-field>
         </div>
         <div cols="4">
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Selecione o tipo do Produto</mat-label>
+            <mat-select [(value)]="produto.tipo">
+              <mat-option value="PERFUMARIA">PERFUMARIA</mat-option>
+              <mat-option value="BATON">BATON</mat-option>
+              <mat-option value="INFANTIL">INFANTIL</mat-option>
+              <mat-option value="MAQUIAGEM">MAQUIAGEM</mat-option>
+              <mat-option value="ROSTO">ROSTO</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div cols="4">
           <mat-form-field class="example-full-width">
             <input matInput placeholder="Codigo do produto" [(ngModel)]="produto.codigoProduto" required  name="codigoProduto">
           </mat-form-field>
