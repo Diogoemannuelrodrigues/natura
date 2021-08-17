@@ -20,45 +20,43 @@ import br.com.natura.service.ProdutoService;
 @RequestMapping(value = "/produtos")
 @CrossOrigin
 public class ProdutoResource {
-	
-	@Autowired
-	private ProdutoService produtoService;
-	
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public ResponseEntity<Produto> findProduto (@PathVariable Integer id){
-		Produto produto = produtoService.buscarProduto(id);
-		return ResponseEntity.ok().body(produto);
-	}
-	
-	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<Void> saveProduto (@RequestBody Produto produto){
-		Produto newproduto = produtoService.salvarProduto(produto);
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
-				.path("/{id}")
-				.buildAndExpand(produto.getId_produto())
-				.toUri();
-		return ResponseEntity.created(uri).build();
-	}
-	
-	@RequestMapping(value = "/{id_produto}", method = RequestMethod.PUT)
-	public ResponseEntity<Produto> alterarProduto (@RequestBody Produto produto){
-		Produto produtoalt = produtoService.alterarProduto(produto);
-		return ResponseEntity.ok().body(produtoalt);
-	}
-	
-	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public ResponseEntity<Produto> deletaProduto(@PathVariable Integer id){
-		produtoService.deletarProduto(id);
-		return ResponseEntity.noContent().build();
-	}
-	
-	@RequestMapping(method = RequestMethod.GET)
-	public List<Produto> listarClientes(){
-		List<Produto> pro = produtoService.listarProdutos();
-		return pro;
-	}
 
-	
-	
+    @Autowired
+    private ProdutoService produtoService;
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public ResponseEntity<Produto> findProduto(@PathVariable Integer id) {
+        Produto produto = produtoService.buscarProduto(id);
+        return ResponseEntity.ok().body(produto);
+    }
+
+    @RequestMapping(method = RequestMethod.POST)
+    public ResponseEntity<Void> saveProduto(@RequestBody Produto produto) {
+        Produto newproduto = produtoService.salvarProduto(produto);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
+                .path("/{id}")
+                .buildAndExpand(produto.getId_produto())
+                .toUri();
+        return ResponseEntity.created(uri).build();
+    }
+
+    @RequestMapping(value = "/{id_produto}", method = RequestMethod.PUT)
+    public ResponseEntity<Produto> alterarProduto(@RequestBody Produto produto) {
+        Produto produtoalt = produtoService.alterarProduto(produto);
+        return ResponseEntity.ok().body(produtoalt);
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<Produto> deletaProduto(@PathVariable Integer id) {
+        produtoService.deletarProduto(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @RequestMapping(method = RequestMethod.GET)
+    public List<Produto> listarClientes() {
+        List<Produto> pro = produtoService.listarProdutos();
+        return pro;
+    }
+
 
 }

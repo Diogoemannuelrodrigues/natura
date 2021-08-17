@@ -12,28 +12,28 @@ import br.com.natura.repository.PedidoRepository;
 @Service
 public class PedidoService {
 
-	@Autowired
-	private PedidoRepository repo;
+    @Autowired
+    private PedidoRepository repo;
 
-	public Pedido buscarPedido(Integer p) {
-		Optional<Pedido> Pedido = repo.findById(p);
-		return Pedido.orElse(null);
-	}
+    public Pedido buscarPedido(Integer p) {
+        Optional<Pedido> Pedido = repo.findById(p);
+        return Pedido.orElse(null);
+    }
 
-	public Pedido salvarPedido(Pedido Pedido) {
-		return repo.save(Pedido);
-	}
+    public Pedido salvarPedido(Pedido Pedido) {
+        return repo.save(Pedido);
+    }
 
-	public void deletarPedido(Integer id) {
-		repo.deleteById(id);
-	}
+    public void deletarPedido(Integer id) {
+        repo.deleteById(id);
+    }
 
-	public Pedido alterarPedido(Pedido Pedido) {
-		Optional<Pedido> c = repo.findById(Pedido.getId());
-		return repo.save(Pedido);
-	}
+    public Pedido alterarPedido(Pedido Pedido) {
+        Optional<Pedido> c = repo.findById(Pedido.getId());
+        return repo.save(Pedido);
+    }
 
-	public List<Pedido> listaPedidos() {
-		return repo.findAll();
-	}
+    public List<Pedido> listaPedidos() {
+        return repo.findAll();
+    }
 }

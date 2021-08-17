@@ -18,43 +18,43 @@ import br.com.natura.service.ClienteService;
 @RestController
 @RequestMapping(value = "/clientes")
 public class ClienteResource {
-	
-	@Autowired
-	private ClienteService clienteService;
-	
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public ResponseEntity<Cliente> findcliente(@PathVariable Integer id){
-		Cliente clienteId = clienteService.buscarCliente(id);
-		return ResponseEntity.ok().body(clienteId);
-	}
-	
-	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<Void> saveCliente (@RequestBody Cliente cliente){
-		Cliente newCliente = clienteService.salvarCliente(cliente);
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
-				.path("/{id}")
-				.buildAndExpand(cliente.getId_cliente())
-				.toUri();
-		return ResponseEntity.created(uri).build();
-	}
 
-	@RequestMapping(method = RequestMethod.GET)
-	public List<Cliente> listarClientes(){
-		List<Cliente> cli = clienteService.listaClientes();
-		return cli;
-	}
-	
-	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<Cliente> alterarCliente (@RequestBody Cliente cliente){
-		Cliente cli = clienteService.alterarCliente(cliente);
-		return ResponseEntity.ok().body(cli);
-	}
-	
-	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public ResponseEntity<Cliente> deletaProduto(@PathVariable Integer id){
-		clienteService.deletarCliente(id);
-		return ResponseEntity.noContent().build();
-	}
-	
+    @Autowired
+    private ClienteService clienteService;
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public ResponseEntity<Cliente> findcliente(@PathVariable Integer id) {
+        Cliente clienteId = clienteService.buscarCliente(id);
+        return ResponseEntity.ok().body(clienteId);
+    }
+
+    @RequestMapping(method = RequestMethod.POST)
+    public ResponseEntity<Void> saveCliente(@RequestBody Cliente cliente) {
+        Cliente newCliente = clienteService.salvarCliente(cliente);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
+                .path("/{id}")
+                .buildAndExpand(cliente.getId_cliente())
+                .toUri();
+        return ResponseEntity.created(uri).build();
+    }
+
+    @RequestMapping(method = RequestMethod.GET)
+    public List<Cliente> listarClientes() {
+        List<Cliente> cli = clienteService.listaClientes();
+        return cli;
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    public ResponseEntity<Cliente> alterarCliente(@RequestBody Cliente cliente) {
+        Cliente cli = clienteService.alterarCliente(cliente);
+        return ResponseEntity.ok().body(cli);
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<Cliente> deletaProduto(@PathVariable Integer id) {
+        clienteService.deletarCliente(id);
+        return ResponseEntity.noContent().build();
+    }
+
 
 }

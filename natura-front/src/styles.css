@@ -1,51 +1,58 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
 
 .toobar {
-   display: flex;
-   align-items: center;
-   background-color:  #F4A460
+  display: flex;
+  align-items: center;
+  background-color: #F4A460
 }
 
 .toobar a {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
- }
-
- .toobar .logo {
-    max-height: 60px;
- }
-
- .cor {
-    color: black
- }
-
- .nova {
-     position: fixed;
-     bottom: 0;
-     display: flex;
-     justify-content: flex-end;
-     font-size: small;
-     color: black
- }
-
- body{
-    background-image: url(./assets/nat.jpg);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    background-size: auto;
-   /*  opacity: 0.50; */
- }
-
- .title {
-   font-size:50pc;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
 }
-/* 
+
+.toobar .logo {
+  max-height: 60px;
+}
+
+.cor {
+  color: black
+}
+
+.nova {
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-content: flex-end;
+  font-size: small;
+  color: black
+}
+
+body {
+  background-image: url(./assets/nat.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-size: auto;
+  /*  opacity: 0.50; */
+}
+
+.title {
+  font-size: 50pc;
+}
+
+/*
 
 
 
@@ -53,5 +60,5 @@ style="font-size: 70px; font-family: Oswald sans-serif;font-weight:bold;color:#F
 
 
 .teste {
-font-size: large;
+  font-size: large;
 }

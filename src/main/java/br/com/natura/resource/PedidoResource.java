@@ -19,39 +19,39 @@ import br.com.natura.service.PedidoService;
 @RequestMapping(value = "/pedidos")
 public class PedidoResource {
 
-	@Autowired
-	private PedidoService catService;
+    @Autowired
+    private PedidoService catService;
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public ResponseEntity<Pedido> findPedido(@PathVariable Integer id) {
-		Pedido Pedido = catService.buscarPedido(id);
-		return ResponseEntity.ok().body(Pedido);
-	}
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public ResponseEntity<Pedido> findPedido(@PathVariable Integer id) {
+        Pedido Pedido = catService.buscarPedido(id);
+        return ResponseEntity.ok().body(Pedido);
+    }
 
-	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<Void> savePedido(@RequestBody Pedido Pedido) {
-		Pedido Pedidonew = catService.salvarPedido(Pedido);
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(Pedido.getId())
-				.toUri();
-		return ResponseEntity.created(uri).build();
-	}
+    @RequestMapping(method = RequestMethod.POST)
+    public ResponseEntity<Void> savePedido(@RequestBody Pedido Pedido) {
+        Pedido Pedidonew = catService.salvarPedido(Pedido);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(Pedido.getId())
+                .toUri();
+        return ResponseEntity.created(uri).build();
+    }
 
-	@RequestMapping(method = RequestMethod.GET)
-	public List<Pedido> Pedidos() {
-		List<Pedido> cat = catService.listaPedidos();
-		return cat;
-	}
+    @RequestMapping(method = RequestMethod.GET)
+    public List<Pedido> Pedidos() {
+        List<Pedido> cat = catService.listaPedidos();
+        return cat;
+    }
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<Pedido> alterarPedido(@RequestBody Pedido Pedido) {
-		Pedido cli = catService.alterarPedido(Pedido);
-		return ResponseEntity.ok().body(cli);
-	}
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    public ResponseEntity<Pedido> alterarPedido(@RequestBody Pedido Pedido) {
+        Pedido cli = catService.alterarPedido(Pedido);
+        return ResponseEntity.ok().body(cli);
+    }
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public ResponseEntity<Pedido> deletaProduto(@PathVariable Integer id) {
-		catService.deletarPedido(id);
-		return ResponseEntity.noContent().build();
-	}
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<Pedido> deletaProduto(@PathVariable Integer id) {
+        catService.deletarPedido(id);
+        return ResponseEntity.noContent().build();
+    }
 
 }

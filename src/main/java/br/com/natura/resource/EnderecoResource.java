@@ -19,39 +19,39 @@ import br.com.natura.service.EnderecoService;
 @RequestMapping(value = "/enderecos")
 public class EnderecoResource {
 
-	@Autowired
-	private EnderecoService endService;
+    @Autowired
+    private EnderecoService endService;
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public ResponseEntity<Endereco> findEndereco(@PathVariable Integer id) {
-		Endereco Endereco = endService.buscarEndereco(id);
-		return ResponseEntity.ok().body(Endereco);
-	}
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public ResponseEntity<Endereco> findEndereco(@PathVariable Integer id) {
+        Endereco Endereco = endService.buscarEndereco(id);
+        return ResponseEntity.ok().body(Endereco);
+    }
 
-	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<Void> saveEndereco(@RequestBody Endereco Endereco) {
-		Endereco Endereconew = endService.salvarEndereco(Endereco);
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(Endereco.getId())
-				.toUri();
-		return ResponseEntity.created(uri).build();
-	}
+    @RequestMapping(method = RequestMethod.POST)
+    public ResponseEntity<Void> saveEndereco(@RequestBody Endereco Endereco) {
+        Endereco Endereconew = endService.salvarEndereco(Endereco);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(Endereco.getId())
+                .toUri();
+        return ResponseEntity.created(uri).build();
+    }
 
-	@RequestMapping(method = RequestMethod.GET)
-	public List<Endereco> Enderecos() {
-		List<Endereco> cat = endService.listaEnderecos();
-		return cat;
-	}
+    @RequestMapping(method = RequestMethod.GET)
+    public List<Endereco> Enderecos() {
+        List<Endereco> cat = endService.listaEnderecos();
+        return cat;
+    }
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<Endereco> alterarEndereco(@RequestBody Endereco Endereco) {
-		Endereco cli = endService.alterarEndereco(Endereco);
-		return ResponseEntity.ok().body(cli);
-	}
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    public ResponseEntity<Endereco> alterarEndereco(@RequestBody Endereco Endereco) {
+        Endereco cli = endService.alterarEndereco(Endereco);
+        return ResponseEntity.ok().body(cli);
+    }
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public ResponseEntity<Endereco> deletaProduto(@PathVariable Integer id) {
-		endService.deletarEndereco(id);
-		return ResponseEntity.noContent().build();
-	}
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<Endereco> deletaProduto(@PathVariable Integer id) {
+        endService.deletarEndereco(id);
+        return ResponseEntity.noContent().build();
+    }
 
 }

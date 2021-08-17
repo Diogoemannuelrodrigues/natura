@@ -9,8 +9,8 @@ import br.com.natura.entidade.Cliente;
 
 @Repository
 public interface ClienteRepository extends JpaRepository<Cliente, Integer> {
-	
-	@Transactional()
-	Cliente findByEmail(String email);
+
+    @Transactional()
+    Cliente findByEmail(String email);
 
 }

@@ -12,28 +12,28 @@ import br.com.natura.repository.CategoriaRepository;
 @Service
 public class CategoriaService {
 
-	@Autowired
-	private CategoriaRepository repo;
+    @Autowired
+    private CategoriaRepository repo;
 
-	public Categoria buscarCategoria(Integer p) {
-		Optional<Categoria> Categoria = repo.findById(p);
-		return Categoria.orElse(null);
-	}
+    public Categoria buscarCategoria(Integer p) {
+        Optional<Categoria> Categoria = repo.findById(p);
+        return Categoria.orElse(null);
+    }
 
-	public Categoria salvarCategoria(Categoria Categoria) {
-		return repo.save(Categoria);
-	}
+    public Categoria salvarCategoria(Categoria Categoria) {
+        return repo.save(Categoria);
+    }
 
-	public void deletarCategoria(Integer id) {
-		repo.deleteById(id);
-	}
+    public void deletarCategoria(Integer id) {
+        repo.deleteById(id);
+    }
 
-	public Categoria alterarCategoria(Categoria Categoria) {
-		Optional<Categoria> c = repo.findById(Categoria.getId());
-		return repo.save(Categoria);
-	}
+    public Categoria alterarCategoria(Categoria Categoria) {
+        Optional<Categoria> c = repo.findById(Categoria.getId());
+        return repo.save(Categoria);
+    }
 
-	public List<Categoria> listaCategorias() {
-		return repo.findAll();
-	}
+    public List<Categoria> listaCategorias() {
+        return repo.findAll();
+    }
 }

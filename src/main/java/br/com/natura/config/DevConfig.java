@@ -12,21 +12,21 @@ import br.com.natura.service.DBService;
 @Profile("dev")
 public class DevConfig {
 
-	@Autowired
-	private DBService dbService;
-	
-	@Value("${spring.jpa.hibernate.ddl-auto}")
-	private String strategy;
-	
-	@Bean
-	public boolean instantiateDatabase() throws java.text.ParseException  {
-		
-		if (!"create".equals(strategy)) {
-			return false;
-		}
-		
-		dbService.instantiateTestDatabase();
-		return true;
-	}
-	
+    @Autowired
+    private DBService dbService;
+
+    @Value("${spring.jpa.hibernate.ddl-auto}")
+    private String strategy;
+
+    @Bean
+    public boolean instantiateDatabase() throws java.text.ParseException {
+
+        if (!"create".equals(strategy)) {
+            return false;
+        }
+
+        dbService.instantiateTestDatabase();
+        return true;
+    }
+
 }

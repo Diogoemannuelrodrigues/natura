@@ -15,160 +15,171 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import br.com.natura.entidade.enums.TipoProduto;
+
 @Entity
-@Table(name = "produto")
 @CrossOrigin
 public class Produto implements Serializable {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer id_produto;
-	@Column
-	private String nome;
-	@Column
-	private int codigoProduto;
-	@Column
-	private String descricao;
-	@Column
-	private double preco;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id_produto;
+    @Column
+    private String nome;
+    @Column
+    private int codigoProduto;
+    @Column
+    private String descricao;
+    @Column
+    private double preco;
+    @Column
+    private TipoProduto tipo;
 
-	@JsonIgnore
-	@ManyToMany
-	@JoinTable(name = "PRODUTO_CATEGORIA", joinColumns = @JoinColumn(name = "id_produto"), inverseJoinColumns = @JoinColumn(name = "id_categoria"))
-	private List<Categoria> categorias = new ArrayList<>();
-	
-	@JsonIgnore
-	@OneToMany(mappedBy="id.produto")
-	private Set<ItemPedido> itens = new HashSet<>();
+    @JsonIgnore
+    @ManyToMany
+    @JoinTable(name = "PRODUTO_CATEGORIA", joinColumns = @JoinColumn(name = "produto_id"), inverseJoinColumns = @JoinColumn(name = "categoria_id"))
+    private List<Categoria> categorias = new ArrayList<>();
 
-	public Produto() {
-	}
+    @JsonIgnore
+    @OneToMany(mappedBy = "id.produto")
+    private Set<ItemPedido> itens = new HashSet<>();
 
-	public Produto(Integer id_produto, String nome, int codigoProduto, String descricao, double preco) {
-		super();
-		this.id_produto = id_produto;
-		this.nome = nome;
-		this.codigoProduto = codigoProduto;
-		this.descricao = descricao;
-		this.preco = preco;
-	}
+    public Produto() {
+    }
 
-	@JsonIgnore
-	public List<Pedido> getPedidos() {
-		List<Pedido> lista = new ArrayList<>();
-		for (ItemPedido x : itens) {
-			lista.add(x.getPedido());
-		}
-		return lista;
-	}
+    public Produto(Integer id_produto, String nome, int codigoProduto, String descricao, double preco, TipoProduto tipo) {
+        super();
+        this.id_produto = id_produto;
+        this.nome = nome;
+        this.codigoProduto = codigoProduto;
+        this.descricao = descricao;
+        this.preco = preco;
+        this.tipo = tipo;
+    }
 
-	public Integer getId_produto() {
-		return id_produto;
-	}
+    @JsonIgnore
+    public List<Pedido> getPedidos() {
+        List<Pedido> lista = new ArrayList<>();
+        for (ItemPedido x : itens) {
+            lista.add(x.getPedido());
+        }
+        return lista;
+    }
 
-	public void setId_produto(Integer id_produto) {
-		this.id_produto = id_produto;
-	}
+    public Integer getId_produto() {
+        return id_produto;
+    }
 
-	public double getPreco() {
-		return preco;
-	}
+    public void setId_produto(Integer id_produto) {
+        this.id_produto = id_produto;
+    }
 
-	public void setPreco(double preco) {
-		this.preco = preco;
-	}
+    public double getPreco() {
+        return preco;
+    }
 
-	public String getNome() {
-		return nome;
-	}
+    public void setPreco(double preco) {
+        this.preco = preco;
+    }
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+    public String getNome() {
+        return nome;
+    }
 
-	public int getCodigoProduto() {
-		return codigoProduto;
-	}
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
-	public void setCodigoProduto(int codigoProduto) {
-		this.codigoProduto = codigoProduto;
-	}
+    public int getCodigoProduto() {
+        return codigoProduto;
+    }
 
-	public String getDescricao() {
-		return descricao;
-	}
+    public void setCodigoProduto(int codigoProduto) {
+        this.codigoProduto = codigoProduto;
+    }
 
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
+    public String getDescricao() {
+        return descricao;
+    }
 
-	public List<Categoria> getCategorias() {
-		return categorias;
-	}
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
 
-	public void setCategorias(List<Categoria> categorias) {
-		this.categorias = categorias;
-	}
+    public List<Categoria> getCategorias() {
+        return categorias;
+    }
 
-	public Set<ItemPedido> getItens() {
-		return itens;
-	}
+    public void setCategorias(List<Categoria> categorias) {
+        this.categorias = categorias;
+    }
 
-	public void setItens(Set<ItemPedido> itens) {
-		this.itens = itens;
-	}
+    public Set<ItemPedido> getItens() {
+        return itens;
+    }
 
-	@Override
-	public String toString() {
-		return "Nome Produto = " + this.nome + "/nCodigo produto = " + this.codigoProduto + "/nDescricao produto "
-				+ this.descricao;
-	}
+    public void setItens(Set<ItemPedido> itens) {
+        this.itens = itens;
+    }
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + codigoProduto;
-		result = prime * result + ((descricao == null) ? 0 : descricao.hashCode());
-		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
-		long temp;
-		temp = Double.doubleToLongBits(preco);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		return result;
-	}
+    public TipoProduto getTipo() {
+        return tipo;
+    }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Produto other = (Produto) obj;
-		if (codigoProduto != other.codigoProduto)
-			return false;
-		if (descricao == null) {
-			if (other.descricao != null)
-				return false;
-		} else if (!descricao.equals(other.descricao))
-			return false;
-		if (nome == null) {
-			if (other.nome != null)
-				return false;
-		} else if (!nome.equals(other.nome))
-			return false;
-		if (Double.doubleToLongBits(preco) != Double.doubleToLongBits(other.preco))
-			return false;
-		return true;
-	}
+    public void setTipo(TipoProduto tipo) {
+        this.tipo = tipo;
+    }
+
+    @Override
+    public String toString() {
+        return "Nome Produto = " + this.nome + "/nCodigo produto = " + this.codigoProduto + "/nDescricao produto "
+                + this.descricao;
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + codigoProduto;
+        result = prime * result + ((descricao == null) ? 0 : descricao.hashCode());
+        result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+        long temp;
+        temp = Double.doubleToLongBits(preco);
+        result = prime * result + (int) (temp ^ (temp >>> 32));
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Produto other = (Produto) obj;
+        if (codigoProduto != other.codigoProduto)
+            return false;
+        if (descricao == null) {
+            if (other.descricao != null)
+                return false;
+        } else if (!descricao.equals(other.descricao))
+            return false;
+        if (nome == null) {
+            if (other.nome != null)
+                return false;
+        } else if (!nome.equals(other.nome))
+            return false;
+        if (Double.doubleToLongBits(preco) != Double.doubleToLongBits(other.preco))
+            return false;
+        return true;
+    }
 
 }

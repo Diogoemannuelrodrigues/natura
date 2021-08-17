@@ -19,39 +19,39 @@ import br.com.natura.service.CategoriaService;
 @RequestMapping(value = "/categorias")
 public class CategoriaResource {
 
-	@Autowired
-	private CategoriaService catService;
+    @Autowired
+    private CategoriaService catService;
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public ResponseEntity<Categoria> findCategoria(@PathVariable Integer id) {
-		Categoria categoria = catService.buscarCategoria(id);
-		return ResponseEntity.ok().body(categoria);
-	}
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public ResponseEntity<Categoria> findCategoria(@PathVariable Integer id) {
+        Categoria categoria = catService.buscarCategoria(id);
+        return ResponseEntity.ok().body(categoria);
+    }
 
-	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<Void> saveCategoria(@RequestBody Categoria categoria) {
-		Categoria categorianew = catService.salvarCategoria(categoria);
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(categoria.getId())
-				.toUri();
-		return ResponseEntity.created(uri).build();
-	}
+    @RequestMapping(method = RequestMethod.POST)
+    public ResponseEntity<Void> saveCategoria(@RequestBody Categoria categoria) {
+        Categoria categorianew = catService.salvarCategoria(categoria);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(categoria.getId())
+                .toUri();
+        return ResponseEntity.created(uri).build();
+    }
 
-	@RequestMapping(method = RequestMethod.GET)
-	public List<Categoria> categorias() {
-		List<Categoria> cat = catService.listaCategorias();
-		return cat;
-	}
+    @RequestMapping(method = RequestMethod.GET)
+    public List<Categoria> categorias() {
+        List<Categoria> cat = catService.listaCategorias();
+        return cat;
+    }
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<Categoria> alterarCategoria(@RequestBody Categoria Categoria) {
-		Categoria cli = catService.alterarCategoria(Categoria);
-		return ResponseEntity.ok().body(cli);
-	}
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    public ResponseEntity<Categoria> alterarCategoria(@RequestBody Categoria Categoria) {
+        Categoria cli = catService.alterarCategoria(Categoria);
+        return ResponseEntity.ok().body(cli);
+    }
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public ResponseEntity<Categoria> deletaProduto(@PathVariable Integer id) {
-		catService.deletarCategoria(id);
-		return ResponseEntity.noContent().build();
-	}
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<Categoria> deletaProduto(@PathVariable Integer id) {
+        catService.deletarCategoria(id);
+        return ResponseEntity.noContent().build();
+    }
 
 }

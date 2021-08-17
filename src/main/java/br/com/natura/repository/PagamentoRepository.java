@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import br.com.natura.entidade.Pagamento;
 
 @Repository
-public interface PagamentoRepository extends JpaRepository<Pagamento, Integer>{
+public interface PagamentoRepository extends JpaRepository<Pagamento, Integer> {
 
 }
