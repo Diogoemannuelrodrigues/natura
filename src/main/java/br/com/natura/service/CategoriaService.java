@@ -23,7 +23,7 @@ public class CategoriaService {
     * */
     public Categoria buscarCategoria(Integer p) {
         requireNonNull(p);
-//        Optional<Categoria> Categoria = repo.findById(p);
+//        Optional<Categoria> Categoria = repo.findById(p)
         return repo.findById(p).orElseThrow(RuntimeException::new);
     }
 
