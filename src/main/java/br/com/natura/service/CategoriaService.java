@@ -9,15 +9,22 @@ import org.springframework.stereotype.Service;
 import br.com.natura.entidade.Categoria;
 import br.com.natura.repository.CategoriaRepository;
 
+import static java.util.Objects.requireNonNull;
+
 @Service
 public class CategoriaService {
-
-    @Autowired
     private CategoriaRepository repo;
 
+    public CategoriaService(CategoriaRepository repo) {
+        this.repo = repo;
+    }
+    /*
+    * Refatoração do método
+    * */
     public Categoria buscarCategoria(Integer p) {
-        Optional<Categoria> Categoria = repo.findById(p);
-        return Categoria.orElse(null);
+        requireNonNull(p);
+//        Optional<Categoria> Categoria = repo.findById(p);
+        return repo.findById(p).orElseThrow(RuntimeException::new);
     }
 
     public Categoria salvarCategoria(Categoria Categoria) {
