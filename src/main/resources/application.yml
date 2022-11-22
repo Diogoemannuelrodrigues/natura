@@ -1,4 +1,12 @@
-spring.profiles.active=dev
+spring:
+  application:
+    name: cruncher
+  profile: dev
 
-jwt.secret=AssinaturaJWT
-jwt.expiration=60000
+server:
+  port: 8080
+
+jwt:
+  expiration: 60000
+  secret: AssinaturaJWT
+
